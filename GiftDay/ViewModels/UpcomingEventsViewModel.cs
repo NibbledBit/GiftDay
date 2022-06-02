@@ -1,7 +1,6 @@
 ﻿using BitOfA.Helper.MVVM;
-using GiftDay.Domain;
+using GiftDay.Models;
 using GiftDay.Services;
-using System.Reflection;
 
 namespace GiftDay.ViewModels;
 
@@ -12,15 +11,13 @@ public class UpcomingEventsViewModel : IViewModel
     public UpcomingEventsViewModel(IEventsService events)
     {
         this.events = events;
-        MyEvents = GetEvents();
-
     }
 
-    public IEnumerable<GiftEvent> GetEvents()
+    public async Task OnLoading()
     {
-        return events.GetEvents();
+        MyEvents = await events.GetEvents();
     }
 
-    public IEnumerable<GiftEvent> MyEvents { get; set; }
+    public IEnumerable<UpcomingEventDto> MyEvents { get; set; }
 
 }

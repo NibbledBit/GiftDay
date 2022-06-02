@@ -17,4 +17,6 @@ public class Person : IIntKeyedRecord
 
     public ICollection<GiftEvent>? EventsToCelebrate { get; protected set; } 
 
+
+
 }

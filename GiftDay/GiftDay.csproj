@@ -48,4 +48,8 @@
 		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <PackageReference Include="BitOfA.Helper" Version="0.2.3" />
+	</ItemGroup>
+
 </Project>

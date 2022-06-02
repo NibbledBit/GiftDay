@@ -49,7 +49,28 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <PackageReference Include="BitOfA.Helper" Version="0.2.3" />
+	  <None Include="..\.editorconfig" Link=".editorconfig" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <PackageReference Include="BitOfA.Helper" Version="0.2.4" />
+	  <PackageReference Include="MediatR" Version="10.0.1" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\GiftDay.Common\GiftDay.Common.csproj" />
+	  <ProjectReference Include="..\GiftDay.Domain\GiftDay.Domain.csproj" />
+	  <ProjectReference Include="..\GiftDay.Persistence\GiftDay.Persistence.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="Views\UpcomingEventsView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Eventing\" />
 	</ItemGroup>
 
 </Project>

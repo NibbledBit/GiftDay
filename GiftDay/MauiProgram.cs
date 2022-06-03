@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using BitOfA.Helper.DDD;
+using BitOfA.Helper.MVVM;
 using GiftDay.Common;
 using GiftDay.Persistence;
 using GiftDay.Services;
@@ -24,8 +25,8 @@ public static class MauiProgram
         //Register all ViewModels
         var services = builder.Services;
 
-        services.RegisterAll("GiftDay.ViewModels");
-        services.RegisterAll("GiftDay.Views");
+        services.AddViewModels();
+        services.AddViews();
         services.AddServiceLayer();
 
         services.AddTransient<AppShell>();
@@ -66,6 +67,26 @@ public static class Extensions
                     services.AddTransient(myInter, t);
                 }
             }
+        }
+    }
+    public static void AddViews(this IServiceCollection services)
+    {
+        services.AddTypes<ContentPage>();
+    }
+    public static void AddViewModels(this IServiceCollection services)
+    {
+        services.AddTypes<IViewModel>();
+    }
+    public static void AddTypes<T>(this IServiceCollection services)
+    {
+        var type = typeof(T);
+        var types = AppDomain.CurrentDomain.GetAssemblies()
+            .SelectMany(s => s.GetTypes())
+            .Where(p => type.IsAssignableFrom(p));
+        foreach (var t in types)
+        {
+            if (!t.IsInterface)
+                services.AddTransient(t);
         }
     }
     public static void AddMapper(this IServiceCollection services)

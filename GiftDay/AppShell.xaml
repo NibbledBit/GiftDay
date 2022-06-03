@@ -6,9 +6,21 @@
     xmlns:local="clr-namespace:GiftDay.Views"
     Shell.FlyoutBehavior="Disabled">
 
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:UpcomingEventsView}"
-        Route="MainPage" />
 
+
+
+    <TabBar>
+        <Tab Title="Home" Icon="">
+            <ShellContent
+                Title="Home"
+                ContentTemplate="{DataTemplate local:UpcomingEventsView}"
+                Route="HomePage" />
+        </Tab>
+        <Tab Title="Add Person" Icon="">
+            <ShellContent
+                Title="Add Person"
+                ContentTemplate="{DataTemplate local:AddPersonView}"
+                Route="AddPersonPage" />
+        </Tab>
+    </TabBar>
 </Shell>

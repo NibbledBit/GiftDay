@@ -15,7 +15,7 @@ public class Person : IIntKeyedRecord
     public string FirstName { get; protected set; }
     public string? LastName { get;protected set; }
 
-    public ICollection<GiftEvent>? EventsToCelebrate { get; protected set; } 
+    public ICollection<GiftEvent> EventsToCelebrate { get; protected set; } 
 
 
 

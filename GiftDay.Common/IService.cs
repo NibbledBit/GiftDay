@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GiftDay.Common
 {
-     public interface IService
+    public interface IService
     {
     }
 }

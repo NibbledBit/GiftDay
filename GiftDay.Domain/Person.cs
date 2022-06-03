@@ -4,6 +4,7 @@ namespace GiftDay.Domain;
 
 public class Person : IIntKeyedRecord
 {
+    protected Person() { }
     public Person(string firstName, string? lastName)
     {
         FirstName = firstName;
@@ -16,7 +17,5 @@ public class Person : IIntKeyedRecord
     public string? LastName { get;protected set; }
 
     public ICollection<GiftEvent> EventsToCelebrate { get; protected set; } 
-
-
 
 }

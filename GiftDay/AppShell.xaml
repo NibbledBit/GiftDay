@@ -7,20 +7,19 @@
     Shell.FlyoutBehavior="Disabled">
 
 
-
-
     <TabBar>
-        <Tab Title="Home" Icon="">
-            <ShellContent
+        <ShellContent
                 Title="Home"
                 ContentTemplate="{DataTemplate local:UpcomingEventsView}"
                 Route="HomePage" />
-        </Tab>
-        <Tab Title="Add Person" Icon="">
-            <ShellContent
+        <ShellContent
                 Title="Add Person"
                 ContentTemplate="{DataTemplate local:AddPersonView}"
                 Route="AddPersonPage" />
-        </Tab>
+        <ShellContent
+                Title="Add Event"
+                ContentTemplate="{DataTemplate local:AddEventView}"
+                Route="AddEventPage" />
+
     </TabBar>
 </Shell>

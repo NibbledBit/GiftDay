@@ -54,7 +54,7 @@
 
 	<ItemGroup>
 	  <PackageReference Include="AutoMapper" Version="11.0.1" />
-	  <PackageReference Include="BitOfA.Helper" Version="0.2.5" />
+	  <PackageReference Include="BitOfA.Helper" Version="0.2.8" />
 	  <PackageReference Include="MediatR" Version="10.0.1" />
 	</ItemGroup>
 
@@ -65,6 +65,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiXaml Update="Views\AddEventView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\AddPersonView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

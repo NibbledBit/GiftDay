@@ -34,10 +34,11 @@ public static class MauiProgram
         services.AddSingleton<INotifyDispatcher, NotifyDispatcher>();
 
         var optionsBuilder = new DbContextOptionsBuilder<GiftDayContext>();
-        optionsBuilder.UseSqlite("Date Source=GiftDayMigsDb.db");
+        optionsBuilder.UseSqlite($"Data Source={FileSystem.AppDataDirectory}\\GiftDayMigsDb.db");
         services.AddSingleton<DbContextOptions<GiftDayContext>>(optionsBuilder.Options);
 
-        services.AddDbContext<GiftDayContext>();
+        services.AddTransient<GiftDayContext>();
+
         services.AddMapper();
 
         return builder.Build();
@@ -85,7 +86,7 @@ public static class Extensions
             .Where(p => type.IsAssignableFrom(p));
         foreach (var t in types)
         {
-            if (!t.IsInterface)
+            if (!t.IsInterface && !t.IsAbstract)
                 services.AddTransient(t);
         }
     }

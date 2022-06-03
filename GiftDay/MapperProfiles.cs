@@ -14,6 +14,7 @@ namespace GiftDay
         public MapperProfile()
         {
             CreateMap<GiftEvent, GiftEventDto>();
+            CreateMap<Person, PersonDto>();
         }
     }
 }

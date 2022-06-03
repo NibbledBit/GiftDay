@@ -3,13 +3,14 @@ using GiftDay.ViewModels;
 
 namespace GiftDay.Views;
 
-public partial class AddPersonView : ContentPage, IView<AddPersonViewModel>
+public partial class AddEventView : ContentPage, IView<AddGiftEventViewModel>
 {
     public IViewModel ViewModel { get; }
-    public AddPersonView(AddPersonViewModel model)
+    public AddEventView(AddGiftEventViewModel model)
     {
         BindingContext = model;
         ViewModel = model;
         InitializeComponent();
-    }
+	}
+
 }

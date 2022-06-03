@@ -22,7 +22,7 @@ namespace GiftDay.Services
             this.mapper = mapper;
         }
 
-        public async Task<GiftEventDto> CreateEvent(string eventTitle, EventType type, DateTime eventDate)
+        public GiftEventDto CreateEvent(string eventTitle, EventType type, DateTime eventDate)
         {
             var events = context.Set<GiftEvent>();
 
@@ -30,21 +30,21 @@ namespace GiftDay.Services
 
             events.Add(newEvent);
 
-            await context.SaveChangesAsync();
+            context.SaveChanges();
 
             return mapper.Map<GiftEventDto>(newEvent);
 
         }
 
-        public Task<GiftEventDto> CreateEvent(int personId, EventType type, DateTime eventDate)
+        public GiftEventDto CreateEvent(int personId, EventType type, DateTime eventDate)
         {
             throw new NotImplementedException();
         }
 
-
-        public Task<IEnumerable<UpcomingEventDto>> GetEvents()
+        public IEnumerable<UpcomingEventDto> GetEvents()
         {
-            return Task.FromResult(new List<UpcomingEventDto>() { new UpcomingEventDto() }.AsEnumerable());
+
+            return new List<UpcomingEventDto>() { new UpcomingEventDto() }.AsEnumerable();
         }
     }
 }

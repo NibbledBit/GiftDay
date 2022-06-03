@@ -1,24 +1,19 @@
 ﻿using BitOfA.Helper.DDD;
 using GiftDay.Domain;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GiftDay.Persistence
 {
     public class GiftDayContext : DbContext
     {
-
-        private readonly DbContextOptions<GiftDayContext> options;
         private readonly INotifyDispatcher dispatcher;
 
-        public GiftDayContext(DbContextOptions<GiftDayContext> options, INotifyDispatcher notifyDispatcher)
+        public GiftDayContext(DbContextOptions<GiftDayContext> options, INotifyDispatcher notifyDispatcher) : base(options)
         {
-            this.options = options;
             this.dispatcher = notifyDispatcher;
+        }
+        public GiftDayContext(DbContextOptions<GiftDayContext> options) : base(options)
+        {
         }
 
         public DbSet<GiftEvent> EventsToCelebrate { get; set; }

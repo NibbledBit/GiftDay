@@ -24,15 +24,16 @@ namespace GiftDay.Persistence
     //    }
 
     //}
-    //public class GiftDayDesignTimeContextFacory : IDesignTimeDbContextFactory<GiftDayContext> {
+    public class GiftDayDesignTimeContextFacory : IDesignTimeDbContextFactory<GiftDayContext>
+    {
 
-    //    public GiftDayContext CreateDbContext(string[] args)
-    //    {
-    //        var optionsBuilder = new DbContextOptionsBuilder<GiftDayContext>();
-    //        optionsBuilder.UseSqlite("Date Source=GiftDayMigsDb.db");
+        public GiftDayContext CreateDbContext(string[] args)
+        {
+            var optionsBuilder = new DbContextOptionsBuilder<GiftDayContext>();
+            optionsBuilder.UseSqlite("Data Source=GiftDayMigsDb.db");
 
-    //        return new GiftDayContext(optionsBuilder.Options);
+            return new GiftDayContext(optionsBuilder.Options);
 
-    //    }
-    //}
+        }
+    }
 }

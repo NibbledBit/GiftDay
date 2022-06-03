@@ -4,6 +4,7 @@ namespace GiftDay.Domain;
 
 public class GiftEvent : IIntKeyedRecord
 {
+    protected GiftEvent() { }
 
     public GiftEvent(string eventTitle, EventType type, DateTime eventDate)
     {
@@ -20,7 +21,7 @@ public class GiftEvent : IIntKeyedRecord
 
 
     public Person Person { get; protected set; }
-    public int PersonId { get; protected set; }
+    public int? PersonId { get; protected set; }
 
     public void AddPerson(Person person)
     {

@@ -33,18 +33,32 @@ namespace GiftDay.Services
             context.SaveChanges();
 
             return mapper.Map<GiftEventDto>(newEvent);
-
         }
 
         public GiftEventDto CreateEvent(int personId, EventType type, DateTime eventDate)
         {
-            throw new NotImplementedException();
+            var events = context.Set<GiftEvent>();
+
+            var people = context.Set<Person>();
+            var person = people.FirstOrDefault(x => x.Id == personId);
+
+            var title = $"{person.FirstName}'s {type}";
+
+            var newEvent = new GiftEvent(title, type, eventDate);
+            newEvent.AddPerson(person);
+
+            events.Add(newEvent);
+
+            context.SaveChanges();
+
+            return mapper.Map<GiftEventDto>(newEvent);
         }
 
         public IEnumerable<UpcomingEventDto> GetEvents()
         {
+            var events = context.Set<GiftEvent>();
 
-            return new List<UpcomingEventDto>() { new UpcomingEventDto() }.AsEnumerable();
+            return mapper.Map<IEnumerable<UpcomingEventDto>>(events.ToList());
         }
     }
 }

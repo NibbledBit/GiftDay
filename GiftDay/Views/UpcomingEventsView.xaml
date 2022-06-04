@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:GiftDay.ViewModels"
+             xmlns:model="clr-namespace:GiftDay.Models"
              x:Class="GiftDay.Views.UpcomingEventsView"
              x:DataType="local:UpcomingEventsViewModel" 
              Title="Upcoming Events">
@@ -10,7 +11,7 @@
                 VerticalOptions="Center" 
                 HorizontalOptions="Center" />
 
-        <ListView ItemsSource="{Binding MyEvents}"></ListView>
-
+        <CollectionView ItemsSource="{Binding MyEvents}">
+        </CollectionView>
     </StackLayout>
 </ContentPage>

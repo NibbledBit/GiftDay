@@ -15,15 +15,15 @@ public partial class UpcomingEventsView : ContentPage, IView<UpcomingEventsViewM
 
     }
 
-    protected async override void OnAppearing()
+    protected override void OnAppearing()
     {
-        await ViewModel.OnAppearing();
+        ViewModel.OnAppearing();
         base.OnAppearing();
     }
 
-    protected async override void OnDisappearing()
+    protected override void OnDisappearing()
     {
-        await ViewModel.OnDisappearing();
+        ViewModel.OnDisappearing();
         base.OnDisappearing();
     }
 }

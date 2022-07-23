@@ -6,12 +6,36 @@
              x:Class="GiftDay.Views.UpcomingEventsView"
              x:DataType="local:UpcomingEventsViewModel" 
              Title="Upcoming Events">
+
     <StackLayout>
+
         <Label Text="View Upcoming events!"
                 VerticalOptions="Center" 
                 HorizontalOptions="Center" />
 
-        <CollectionView ItemsSource="{Binding MyEvents}">
+        <CollectionView ItemsSource="{Binding Upcoming}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="{x:Type model:UpcomingEventDto}">
+                    <SwipeView>
+                        <SwipeView.RightItems>
+                            <SwipeItems>
+                                <SwipeItem Text="Done" BackgroundColor="Green"/>
+                            </SwipeItems>
+                        </SwipeView.RightItems>
+                    <Grid Padding="0,5">
+                        <Frame>
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type local:UpcomingEventsViewModel}}, Path=GoToThere}"
+                                                          CommandParameter="{Binding .}"/>
+                                </Frame.GestureRecognizers>
+                            <Label Text="{Binding Title}"
+                                   FontSize="24"/>
+                        </Frame>
+                    </Grid>
+                    </SwipeView>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
         </CollectionView>
+
     </StackLayout>
 </ContentPage>

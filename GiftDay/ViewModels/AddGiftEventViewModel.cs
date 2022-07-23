@@ -1,22 +1,47 @@
 ﻿using BitOfA.Helper.MVVM;
+using CommunityToolkit.Mvvm.ComponentModel;
 using GiftDay.Services;
+using CommunityToolkit.Mvvm.Input;
+using System.Diagnostics.Metrics;
 using System.Windows.Input;
+using GiftDay.Domain;
 
 namespace GiftDay.ViewModels;
 
-public class AddGiftEventViewModel : ViewModelBase
-{
+public partial class AddGiftEventViewModel : ObservableObject, IViewModel {
     private readonly IEventsService events;
+
+    [ObservableProperty]
+    List<Domain.EventType> types = new List<EventType>() { EventType.Anniversary, EventType.Birthday, EventType.Custom };
+
+    [ObservableProperty]
+    string title;
+
+    [ObservableProperty]
+    EventType type;
+
+    [ObservableProperty]
+    DateTime eventDate;
 
     public AddGiftEventViewModel(IEventsService events)
     {
-        CreateEventCommand = new Command(() => Create());
         this.events = events;
     }
-    public ICommand CreateEventCommand { get; set; }
 
-    public void Create()
-    {
-        events.CreateEvent("My New Event", Domain.EventType.Birthday, new DateTime(1987, 11, 11));
+    [RelayCommand]
+    void Create() {
+        events.CreateEvent(title, type, eventDate);
+    }
+
+    public void OnAppeared() {
+    }
+
+    public void OnAppearing() {
+    }
+
+    public void OnDisappearing() {
+    }
+
+    public void OnDispeared() {
     }
 }

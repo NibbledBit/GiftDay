@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:GiftDay.ViewModels"
+             xmlns:model="clr-namespace:GiftDay.Models"
              x:DataType="local:AddGiftEventViewModel" 
              x:Class="GiftDay.Views.AddEventView"
              Title="Add Event">
@@ -9,7 +10,12 @@
     <StackLayout>
         <Label Text="Add Event"/>
 
-        <Button Text="Create Test Event"
-                Command="{Binding CreateEventCommand}"/>
+        <Entry Text="{Binding Title}"/>
+        <Picker ItemsSource="{Binding Types}" SelectedItem="{Binding Type}"/>
+        <DatePicker Date="{Binding EventDate}"/>
+
+        <Button
+            Text="Click me!"
+            Command="{x:Binding CreateCommand}"/>
     </StackLayout>
 </ContentPage>

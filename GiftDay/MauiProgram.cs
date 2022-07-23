@@ -34,7 +34,7 @@ public static class MauiProgram
         services.AddSingleton<INotifyDispatcher, NotifyDispatcher>();
 
         var optionsBuilder = new DbContextOptionsBuilder<GiftDayContext>();
-        optionsBuilder.UseSqlite($"Data Source={FileSystem.AppDataDirectory}\\GiftDayMigsDb.db");
+        optionsBuilder.UseSqlite($"Data Source={FileSystem.AppDataDirectory}\\GiftDayDb.db");
         services.AddSingleton<DbContextOptions<GiftDayContext>>(optionsBuilder.Options);
 
         services.AddTransient<GiftDayContext>();

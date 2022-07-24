@@ -4,6 +4,7 @@ using CommunityToolkit.Mvvm.Input;
 using GiftDay.Models;
 using GiftDay.Persistence;
 using GiftDay.Services;
+using GiftDay.Views;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.ObjectModel;
 
@@ -23,8 +24,12 @@ public partial class UpcomingEventsViewModel : ObservableObject, IViewModel {
     }
 
     [RelayCommand]
-    async Task GoToThere(UpcomingEventDto tapped) {
-        await Shell.Current.GoToAsync(nameof(AddGiftEventViewModel));
+    async Task Edit(UpcomingEventDto tapped) {
+        await Shell.Current.GoToAsync(nameof(AddEventView));
+    }
+    [RelayCommand]
+    async Task Done(UpcomingEventDto tapped) {
+        await Shell.Current.GoToAsync("AddEventPage");
     }
 
     public void OnAppearing() {

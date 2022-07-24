@@ -23,8 +23,7 @@ public partial class AddGiftEventViewModel : ObservableObject, IViewModel {
     [ObservableProperty]
     DateTime eventDate;
 
-    public AddGiftEventViewModel(IEventsService events)
-    {
+    public AddGiftEventViewModel(IEventsService events) {
         this.events = events;
     }
 

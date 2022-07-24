@@ -11,7 +11,7 @@
         <ShellContent
                 Title="Home"
                 ContentTemplate="{DataTemplate local:UpcomingEventsView}"
-                Route="HomePage" />
+                Route="Home" />
         <ShellContent
                 Title="Add Person"
                 ContentTemplate="{DataTemplate local:AddPersonView}"

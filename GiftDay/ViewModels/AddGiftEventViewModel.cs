@@ -5,10 +5,11 @@ using CommunityToolkit.Mvvm.Input;
 using System.Diagnostics.Metrics;
 using System.Windows.Input;
 using GiftDay.Domain;
+using GiftDay.Common;
 
 namespace GiftDay.ViewModels;
 
-public partial class AddGiftEventViewModel : ObservableObject, IViewModel {
+public partial class AddGiftEventViewModel : ViewModelBase {
     private readonly IEventsService events;
 
     [ObservableProperty]
@@ -23,24 +24,12 @@ public partial class AddGiftEventViewModel : ObservableObject, IViewModel {
     [ObservableProperty]
     DateTime eventDate;
 
-    public AddGiftEventViewModel(IEventsService events) {
+    public AddGiftEventViewModel(INavigationService navigationService, IEventsService events) : base(navigationService) {
         this.events = events;
     }
 
     [RelayCommand]
     void Create() {
         events.CreateEvent(title, type, eventDate);
-    }
-
-    public void OnAppeared() {
-    }
-
-    public void OnAppearing() {
-    }
-
-    public void OnDisappearing() {
-    }
-
-    public void OnDispeared() {
     }
 }

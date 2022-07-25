@@ -1,6 +1,7 @@
 ﻿using BitOfA.Helper.MVVM;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using GiftDay.Common;
 using GiftDay.Models;
 using GiftDay.Persistence;
 using GiftDay.Services;
@@ -10,11 +11,16 @@ using System.Collections.ObjectModel;
 
 namespace GiftDay.ViewModels;
 
-public partial class UpcomingEventsViewModel : ObservableObject, IViewModel {
+public partial class UpcomingEventsViewModel : ViewModelBase {
     private readonly IEventsService events;
     private readonly GiftDayContext context;
 
-    public UpcomingEventsViewModel(IEventsService events, GiftDayContext context) {
+    public UpcomingEventsViewModel(
+        INavigationService navigationService, 
+        IEventsService events, 
+        GiftDayContext context) 
+        : base(navigationService) {
+
         context.Database.Migrate();
 
         this.events = events;
@@ -32,21 +38,13 @@ public partial class UpcomingEventsViewModel : ObservableObject, IViewModel {
         await Shell.Current.GoToAsync("AddEventPage");
     }
 
-    public void OnAppearing() {
+    public override void OnAppearing() {
         upcoming.Clear();
         foreach (var item in events.GetEvents()) {
             upcoming.Add(item);
         }
     }
 
-    public void OnAppeared() {
-    }
-
-    public void OnDisappearing() {
-    }
-
-    public void OnDispeared() {
-    }
 
     [ObservableProperty]
     UpcomingEvents upcoming;

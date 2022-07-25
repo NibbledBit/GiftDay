@@ -1,4 +1,5 @@
 ﻿using BitOfA.Helper.MVVM;
+using GiftDay.Common;
 using GiftDay.Services;
 using System.Windows.Input;
 
@@ -8,8 +9,7 @@ public class AddPersonViewModel : ViewModelBase
 {
     private readonly IPersonService personService;
 
-    public AddPersonViewModel(IPersonService personService)
-    {
+    public AddPersonViewModel(INavigationService navigationService, IPersonService personService) : base(navigationService) {
         CreatePersonCommand = new Command(() => Create());
         this.personService = personService;
     }

@@ -14,24 +14,27 @@ namespace GiftDay.ViewModels;
 public partial class UpcomingEventsViewModel : ViewModelBase {
     private readonly IEventsService events;
     private readonly GiftDayContext context;
+    private readonly INavLookupService navLookup;
 
     public UpcomingEventsViewModel(
         INavigationService navigationService, 
         IEventsService events, 
-        GiftDayContext context) 
+        GiftDayContext context,
+        INavLookupService navLookup) 
         : base(navigationService) {
 
+        navLookup.Register<AddGiftEventViewModel, AddEventView>();
         context.Database.Migrate();
 
         this.events = events;
         this.context = context;
-
+        this.navLookup = navLookup;
         upcoming = new UpcomingEvents();
     }
 
     [RelayCommand]
     async Task Edit(UpcomingEventDto tapped) {
-        await Shell.Current.GoToAsync(nameof(AddEventView));
+       await navigationService.Navigate<AddGiftEventViewModel>();
     }
     [RelayCommand]
     async Task Done(UpcomingEventDto tapped) {

@@ -4,7 +4,7 @@ using GiftDay.Common;
 
 namespace GiftDay.ViewModels; 
 public abstract class ViewModelBase : ObservableObject, IViewModel {
-	private readonly INavigationService navigationService;
+	protected readonly INavigationService navigationService;
 
 	public ViewModelBase(INavigationService navigationService) {
 		this.navigationService = navigationService;

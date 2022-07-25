@@ -1,13 +1,14 @@
 ﻿using BitOfA.Helper.DDD;
+using GiftDay.Common;
 
 namespace GiftDay.Services
 {
-    public class NotifyDispatcher : INotifyDispatcher
+    public class NotifyDispatcher : INotifyDispatcher, IService
     {
 
         IList<INotifySubscriber<INotification>> subscribers;
 
-        public NotifyDispatcher()
+        public NotifyDispatcher(IServiceProvider sp)
         {
             subscribers = new List<INotifySubscriber<INotification>>();
         }

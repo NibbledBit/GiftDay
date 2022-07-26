@@ -13,32 +13,25 @@ namespace GiftDay.ViewModels;
 
 public partial class UpcomingEventsViewModel : ViewModelBase {
     private readonly IEventsService events;
-    private readonly GiftDayContext context;
-    private readonly INavLookupService navLookup;
 
     public UpcomingEventsViewModel(
         INavigationService navigationService, 
-        IEventsService events, 
-        GiftDayContext context,
-        INavLookupService navLookup) 
+        IEventsService events) 
         : base(navigationService) {
 
-        navLookup.Register<AddGiftEventViewModel, AddEventView>();
-        context.Database.Migrate();
-
         this.events = events;
-        this.context = context;
-        this.navLookup = navLookup;
-        upcoming = new UpcomingEvents();
+        upcoming = new ObservableCollection<UpcomingEventDto>();
     }
 
     [RelayCommand]
-    async Task Edit(UpcomingEventDto tapped) {
-       await navigationService.Navigate<AddGiftEventViewModel>();
+    Task Edit(UpcomingEventDto tapped) {
+        //TODO: Go to an edit page
+        return Task.CompletedTask;
     }
     [RelayCommand]
-    async Task Done(UpcomingEventDto tapped) {
-        await Shell.Current.GoToAsync("AddEventPage");
+    Task Done(UpcomingEventDto tapped) {
+        //TODO: Mark the event as done
+        return Task.CompletedTask;
     }
 
     public override void OnAppearing() {
@@ -48,12 +41,6 @@ public partial class UpcomingEventsViewModel : ViewModelBase {
         }
     }
 
-
     [ObservableProperty]
-    UpcomingEvents upcoming;
-}
-
-public class UpcomingEvents : ObservableCollection<UpcomingEventDto>
-{
-
+    ObservableCollection<UpcomingEventDto> upcoming;
 }

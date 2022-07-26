@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using BitOfA.Helper.DDD;
 using BitOfA.Helper.MVVM;
 using GiftDay.Common;
 using GiftDay.Persistence;
@@ -38,12 +37,18 @@ public static class MauiProgram {
         optionsBuilder.UseSqlite($"Data Source={FileSystem.AppDataDirectory}\\GiftDayDb.db");
         services.AddSingleton<DbContextOptions<GiftDayContext>>(optionsBuilder.Options);
 
-        services.AddTransient<GiftDayContext>();
+        services.AddTransient<DbContext, GiftDayContext>();
 
         services.AddMapper();
 
-        return builder.Build();
+        var app = builder.Build();
+        var sp = app.Services;
+
+        sp.Install();
+
+        return app;
     }
+
 }
 public static class Extensions {
     public static void RegisterAll(this IServiceCollection services, string myNs) {
@@ -78,7 +83,7 @@ public static class Extensions {
             .Where(p => type.IsAssignableFrom(p));
         foreach (var t in types) {
             if (!t.IsInterface && !t.IsAbstract)
-                    services.AddTransient(t);
+                services.AddTransient(t);
         }
     }
     public static void AddMapper(this IServiceCollection services) {
@@ -86,5 +91,23 @@ public static class Extensions {
             cfg.AddProfile<MapperProfile>();
         });
         services.AddSingleton<IMapper>(mpc.CreateMapper());
+    }
+}
+
+public static class Installers {
+    public static void Install(this IServiceProvider provider) {
+
+        var context = provider.GetService<DbContext>();
+        context.Database.Migrate();
+
+        //var navLookup = provider.GetService<INavLookupService>();
+        //navLookup.RegisterRoute<AddGiftEventViewModel, AddEventView>();
+    }
+
+    public static void RegisterRoute<VM, V>(this INavLookupService navLookup)
+        where V : IView<VM>
+        where VM : IViewModel {
+        navLookup.Register<VM, V>();
+        Routing.RegisterRoute(typeof(V).Name, typeof(V));
     }
 }

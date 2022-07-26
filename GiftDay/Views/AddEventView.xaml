@@ -6,7 +6,6 @@
              x:DataType="local:AddGiftEventViewModel" 
              x:Class="GiftDay.Views.AddEventView"
              Title="Add Event">
-
     <StackLayout>
         <Label Text="Add Event"/>
 

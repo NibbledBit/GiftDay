@@ -15,13 +15,13 @@ namespace GiftDay.Services {
         IViewModel currentVm;
         public async Task Navigate<T>() where T : IViewModel {
 
-            //var newV = navLookup.ConvertVMToV(typeof(T));
+            var newV = navLookup.ConvertVMToV(typeof(T));
 
-            //dynamic viewInstance = serviceProvider.GetService(newV);
 
             //viewInstance.ViewModel.OnAppearing();
+            var name = newV.Name;
 
-            await Shell.Current.GoToAsync(typeof(T));
+            await Shell.Current.GoToAsync(name);
         }
     }
 }

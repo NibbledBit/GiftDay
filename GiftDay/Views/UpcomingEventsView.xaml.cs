@@ -17,7 +17,7 @@ public partial class UpcomingEventsView : ContentPage, IView<UpcomingEventsViewM
 
     protected override void OnAppearing()
     {
-        ViewModel.OnAppearingAsync();
+        ViewModel.OnAppearing();
         base.OnAppearing();
     }
 

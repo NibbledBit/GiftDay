@@ -11,14 +11,18 @@ public abstract class ViewModelBase : ObservableObject, IViewModel {
 	}
 
 	public virtual Task OnAppeared() {
+		return Task.CompletedTask;
 	}
 
-    public virtual Task OnAppearingAsync() {
-	}
+    public virtual Task OnAppearing() {
+        return Task.CompletedTask;
+    }
 
     public virtual Task OnDisappearing() {
-	}
+        return Task.CompletedTask;
+    }
 
     public virtual Task OnDispeared() {
-	}
+        return Task.CompletedTask;
+    }
 }

@@ -54,7 +54,7 @@
 
 	<ItemGroup>
 	  <PackageReference Include="AutoMapper" Version="11.0.1" />
-	  <PackageReference Include="BitOfA.Helper" Version="0.2.10" />
+	  <PackageReference Include="BitOfA.Helper" Version="0.2.11" />
 	  <PackageReference Include="CommunityToolkit.Mvvm" Version="8.0.0-preview4" />
 	  <PackageReference Include="MediatR" Version="10.0.1" />
 	</ItemGroup>

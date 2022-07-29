@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 
 namespace GiftDay.Common {
     public interface INavigationService : IService {
+        Task GoBack();
+        Task GoHome();
         Task Navigate<T>() where T : IViewModel;
     }
 

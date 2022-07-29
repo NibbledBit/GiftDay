@@ -35,5 +35,6 @@ public partial class AddGiftEventViewModel : ViewModelBase {
     [RelayCommand]
     void Create() {
         events.CreateEvent(title, EventType.Custom, eventDate);
+        navigationService.GoHome();
     }
 }

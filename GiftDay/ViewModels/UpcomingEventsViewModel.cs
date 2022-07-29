@@ -34,9 +34,9 @@ public partial class UpcomingEventsViewModel : ViewModelBase {
         return Task.CompletedTask;
     }
 
-    public override void OnAppearing() {
+    public override async Task OnAppearing() {
         upcoming.Clear();
-        foreach (var item in events.GetEvents()) {
+        foreach (var item in await events.GetEvents()) {
             upcoming.Add(item);
         }
     }

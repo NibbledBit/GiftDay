@@ -1,7 +1,5 @@
 ﻿using BitOfA.Helper.MVVM;
 using GiftDay.Common;
-using GiftDay.Views;
-using static Java.Util.Jar.Attributes;
 
 namespace GiftDay.Services {
     public class NavigationService : INavigationService {
@@ -23,7 +21,7 @@ namespace GiftDay.Services {
 
             var newV = navLookup.ConvertVMToV(typeof(T));
             var name = newV.Name;
-            
+
             await Shell.Current.GoToAsync(name);
         }
     }

@@ -10,15 +10,15 @@ public abstract class ViewModelBase : ObservableObject, IViewModel {
 		this.navigationService = navigationService;
 	}
 
-	public virtual void OnAppeared() {
+	public virtual Task OnAppeared() {
 	}
 
-    public virtual void OnAppearing() {
+    public virtual Task OnAppearingAsync() {
 	}
 
-    public virtual void OnDisappearing() {
+    public virtual Task OnDisappearing() {
 	}
 
-    public virtual void OnDispeared() {
+    public virtual Task OnDispeared() {
 	}
 }

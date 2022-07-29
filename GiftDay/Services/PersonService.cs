@@ -17,12 +17,12 @@ public class PersonService : IPersonService
         this.mapper = mapper;
     } 
 
-    public  PersonDto CreatePerson()
+    public async Task<PersonDto> CreatePerson()
     {
         var persons = context.Set<Person>();
         var newPerson = new Person("Nibbled", "Bit");
         persons.Add(newPerson);
-        context.SaveChanges();
+        await context.SaveChangesAsync();
 
         return mapper.Map<PersonDto>(newPerson);
     }

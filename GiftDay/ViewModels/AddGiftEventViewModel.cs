@@ -1,13 +1,8 @@
-﻿using BitOfA.Helper.MVVM;
-using CommunityToolkit.Mvvm.ComponentModel;
-using GiftDay.Services;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using System.Diagnostics.Metrics;
-using System.Windows.Input;
-using GiftDay.Domain;
 using GiftDay.Common;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
+using GiftDay.Domain;
+using GiftDay.Services;
 
 namespace GiftDay.ViewModels;
 
@@ -24,21 +19,22 @@ public partial class AddGiftEventViewModel : ViewModelBase {
     [ObservableProperty]
     DateTime eventDate;
 
-    public AddGiftEventViewModel(INavigationService navigationService, IEventsService events) : base(navigationService) {
-
+    public AddGiftEventViewModel(INavigationService navigationService, IEventsService events)
+        : base(navigationService) {
         this.events = events;
 
-        eventDate = DateTime.Today;
+        ResetUi();
     }
 
-
-
-
     [RelayCommand]
-    void Create() {
-        events.CreateEvent(title, EventType.Custom, eventDate);
+    async Task Create() {
+        await events.CreateEvent(title, EventType.Custom, eventDate);
+        ResetUi();
+        await navigationService.GoHome();
+    }
 
-
-        navigationService.GoHome();
+    private void ResetUi() {
+        title = string.Empty;
+        eventDate = DateTime.Today;
     }
 }

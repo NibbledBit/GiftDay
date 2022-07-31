@@ -1,8 +1,10 @@
 ﻿using AutoMapper;
 using BitOfA.Helper.MVVM;
 using GiftDay.Common;
+using GiftDay.Domain;
 using GiftDay.Persistence;
 using GiftDay.Services;
+using MediatR;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 
@@ -40,6 +42,8 @@ public static class MauiProgram {
         services.AddTransient<DbContext, GiftDayContext>();
 
         services.AddMapper();
+
+        services.AddMediatR(Assembly.GetExecutingAssembly());
 
         var app = builder.Build();
         var sp = app.Services;

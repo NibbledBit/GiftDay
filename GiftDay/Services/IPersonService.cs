@@ -5,5 +5,5 @@ namespace GiftDay.Services;
 
 public interface IPersonService : IService
 {
-    Task<PersonDto> CreatePerson();
+    Task<PersonDto> CreatePerson(string firstName, string surname);
 }

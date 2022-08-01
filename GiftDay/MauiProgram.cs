@@ -106,7 +106,7 @@ public static class Extensions {
         optionsBuilder.UseSqlite(GetConnectionString());  
     }
     private static string GetConnectionString() {
-        return $"Data Source = { FileSystem.AppDataDirectory }\\GiftDayDb.db";
+        return $"Data Source={ FileSystem.AppDataDirectory }\\GiftDayDb.db";
     }
 }
 
@@ -114,6 +114,7 @@ public static class Installers {
     public static void Install(this IServiceProvider provider) {
 
         var context = provider.GetService<GiftDayContext>();
+        //context.Database.EnsureDeleted();
         context.Database.Migrate();
 
         //var navLookup = provider.GetService<INavLookupService>();

@@ -28,13 +28,13 @@ public partial class AddGiftEventViewModel : ViewModelBase {
 
     [RelayCommand]
     async Task Create() {
-        await events.CreateEvent(title, EventType.Custom, eventDate);
+        var ev = await events.CreateEvent(title, EventType.Custom, eventDate);
         ResetUi();
         await navigationService.GoHome();
     }
 
     private void ResetUi() {
-        title = string.Empty;
-        eventDate = DateTime.Today;
+        Title = string.Empty;
+        EventDate = DateTime.Today;
     }
 }

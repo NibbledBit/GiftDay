@@ -4,11 +4,11 @@ namespace GiftDay.Models
 {
     public class GiftEventDto
     {
-        public int Id { get; set; }
+        public int Id { get; }
 
-        public string Title { get; set; }
-        public EventType Type { get; set; }
-        public DateTime Date { get; set; }
+        public string Title { get;  }
+        public EventType Type { get; }
+        public DateTime Date { get; }
 
 
         //public Person Person { get; protected set; }

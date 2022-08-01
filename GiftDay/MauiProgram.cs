@@ -35,11 +35,7 @@ public static class MauiProgram {
         services.AddSingleton<INavigationService, NavigationService>();
         services.AddSingleton<INavLookupService, NavLookupService>();
 
-        var optionsBuilder = new DbContextOptionsBuilder<GiftDayContext>();
-        optionsBuilder.UseSqlite($"Data Source={FileSystem.AppDataDirectory}\\GiftDayDb.db");
-        services.AddSingleton<DbContextOptions<GiftDayContext>>(optionsBuilder.Options);
-
-        services.AddTransient<DbContext, GiftDayContext>();
+        services.AddDataContext();
 
         services.AddMapper();
 
@@ -55,9 +51,9 @@ public static class MauiProgram {
 
 }
 public static class Extensions {
-    public static void RegisterAll(this IServiceCollection services, string myNs) {
+    public static void RegisterAll(this IServiceCollection services, string namespaceToRegister) {
         var q = from t in Assembly.GetExecutingAssembly().GetTypes()
-                where t.IsClass && t.Namespace == myNs
+                where t.IsClass && t.Namespace == namespaceToRegister
                 select t;
         q.ToList().ForEach(t => services.AddTransient(t));
     }
@@ -96,12 +92,28 @@ public static class Extensions {
         });
         services.AddSingleton<IMapper>(mpc.CreateMapper());
     }
+    public static void AddDataContext(this IServiceCollection services) {
+        //Build dbcontext options for IContextFactory usage (to leave consumers up to db lifecycle)
+        var optionsBuilder = new DbContextOptionsBuilder<GiftDayContext>();
+        optionsBuilder.UseSqlite(GetConnectionString());
+        services.AddSingleton<DbContextOptions<GiftDayContext>>(optionsBuilder.Options);
+
+        //Add context using EF Core extensions
+        services.AddDbContext<GiftDayContext>(ConfigureDatabase);
+
+    }
+    private static void ConfigureDatabase(DbContextOptionsBuilder optionsBuilder) {
+        optionsBuilder.UseSqlite(GetConnectionString());  
+    }
+    private static string GetConnectionString() {
+        return $"Data Source = { FileSystem.AppDataDirectory }\\GiftDayDb.db";
+    }
 }
 
 public static class Installers {
     public static void Install(this IServiceProvider provider) {
 
-        var context = provider.GetService<DbContext>();
+        var context = provider.GetService<GiftDayContext>();
         context.Database.Migrate();
 
         //var navLookup = provider.GetService<INavLookupService>();

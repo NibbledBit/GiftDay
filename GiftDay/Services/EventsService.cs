@@ -13,10 +13,10 @@ namespace GiftDay.Services
 {
     public class EventsService : IEventsService
     {
-        private readonly DbContext context;
+        private readonly GiftDayContext context;
         private readonly IMapper mapper;
 
-        public EventsService(DbContext context, IMapper mapper)
+        public EventsService(GiftDayContext context, IMapper mapper)
         {
             this.context = context;
             this.mapper = mapper;

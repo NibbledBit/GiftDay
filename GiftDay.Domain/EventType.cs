@@ -5,6 +5,7 @@
         Birthday,
         Anniversary,
 
-        Custom
+        Custom,
+        Christmas
     }
 }

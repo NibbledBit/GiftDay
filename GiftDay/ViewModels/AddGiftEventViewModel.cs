@@ -27,7 +27,7 @@ public partial class AddGiftEventViewModel : ViewModelBase {
     }
 
     [RelayCommand]
-    async Task Create() {
+    async Task CreateEvent() {
         var ev = await events.CreateEvent(title, EventType.Custom, eventDate);
         ResetUi();
         await navigationService.GoHome();

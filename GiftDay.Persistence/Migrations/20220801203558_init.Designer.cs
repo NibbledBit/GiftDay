@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GiftDay.Persistence.Migrations
 {
     [DbContext(typeof(GiftDayContext))]
-    [Migration("20220603160228_AddedPersonAndEvent")]
-    partial class AddedPersonAndEvent
+    [Migration("20220801203558_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -56,6 +56,7 @@ namespace GiftDay.Persistence.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("LastName")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");

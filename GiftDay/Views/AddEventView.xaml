@@ -18,6 +18,6 @@
 
         <Button
             Text="Create Event"
-            Command="{x:Binding CreateCommand}"/>
+            Command="{x:Binding CreateEventCommand}"/>
     </StackLayout>
 </ContentPage>

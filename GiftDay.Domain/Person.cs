@@ -16,4 +16,10 @@ public class Person : IIntKeyedRecord {
 
     public ICollection<GiftEvent> EventsToCelebrate { get; protected set; }
 
+    public GiftEvent AddEvent(string title, EventType type, DateTime eventDate) {
+
+        var newEvent = new GiftEvent(title, type, eventDate);
+        EventsToCelebrate.Add(newEvent);
+        return newEvent;
+    }
 }

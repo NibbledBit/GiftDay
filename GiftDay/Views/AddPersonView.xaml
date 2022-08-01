@@ -2,12 +2,31 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:GiftDay.ViewModels"
+             xmlns:model="clr-namespace:GiftDay.Models"
              x:DataType="local:AddPersonViewModel" 
              x:Class="GiftDay.Views.AddPersonView"
              Title="Add Person">
-    <StackLayout>
-        <Label Text="Add Person" />
-        <Button Text="Create Test Person"
-                Command="{Binding CreatePersonCommand}"/>
+    
+    <StackLayout Padding="10">
+
+        <Label Text="Create a yearly repeating custom event"/>
+
+        <Label Text="Title"/>
+        <Entry Text="{Binding Name}"/>
+
+        <Label Text="Birthday?"/>
+        <Switch IsToggled="{Binding CelebrateBirthday}"/>
+        <DatePicker Date="{Binding BirthdayDate}"/>
+        
+        <Label Text="Christmas?"/>
+        <Switch IsToggled="{Binding CelebrateChristmas}"/>
+        
+        <Label Text="Anniversary?"/>
+        <Switch IsToggled="{Binding CelebrateAnniversary}"/>
+        <DatePicker Date="{Binding AnniversaryDate}"/>
+
+        <Button
+            Text="Create Event"
+            Command="{x:Binding CreatePersonCommand}"/>
     </StackLayout>
 </ContentPage>

@@ -54,6 +54,7 @@ namespace GiftDay.Persistence.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("LastName")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");

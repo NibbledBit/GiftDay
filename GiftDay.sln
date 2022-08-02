@@ -5,18 +5,20 @@ VisualStudioVersion = 17.0.31611.283
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GiftDay", "GiftDay\GiftDay.csproj", "{D37997EC-9CB8-4BF2-9657-AFC3528E0A51}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GiftDay.Common", "GiftDay.Common\GiftDay.Common.csproj", "{951C68B4-2DC5-47E5-B3E3-764A7D11B096}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GiftDay.Common", "GiftDay.Common\GiftDay.Common.csproj", "{951C68B4-2DC5-47E5-B3E3-764A7D11B096}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GiftDay.Persistence", "GiftDay.Persistence\GiftDay.Persistence.csproj", "{49EF4EAE-69DB-4137-8B2A-C44A64CC089A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GiftDay.Persistence", "GiftDay.Persistence\GiftDay.Persistence.csproj", "{49EF4EAE-69DB-4137-8B2A-C44A64CC089A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GiftDay.Domain", "GiftDay.Domain\GiftDay.Domain.csproj", "{77C9D4CE-CCD2-42D0-916F-75D51230C24F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GiftDay.Domain", "GiftDay.Domain\GiftDay.Domain.csproj", "{77C9D4CE-CCD2-42D0-916F-75D51230C24F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{BB550954-E3D8-485E-AEB2-D67913D63854}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "_MigrationsHelper", "_MigrationsHelper\_MigrationsHelper.csproj", "{B18F983C-60DA-479E-800D-10B01346CCE1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "_MigrationsHelper", "_MigrationsHelper\_MigrationsHelper.csproj", "{B18F983C-60DA-479E-800D-10B01346CCE1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GiftDay.Tests", "GiftDay.Tests\GiftDay.Tests.csproj", "{98842100-3A52-4CA9-BFA3-538749F291C5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -46,6 +48,10 @@ Global
 		{B18F983C-60DA-479E-800D-10B01346CCE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B18F983C-60DA-479E-800D-10B01346CCE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B18F983C-60DA-479E-800D-10B01346CCE1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{98842100-3A52-4CA9-BFA3-538749F291C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98842100-3A52-4CA9-BFA3-538749F291C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98842100-3A52-4CA9-BFA3-538749F291C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98842100-3A52-4CA9-BFA3-538749F291C5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

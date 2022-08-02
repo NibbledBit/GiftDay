@@ -6,38 +6,60 @@
              x:Class="GiftDay.Views.UpcomingEventsView"
              x:DataType="local:UpcomingEventsViewModel" 
              Title="Upcoming Events">
-
-    <StackLayout>
-
-        <Label Text="View Upcoming events!"
-                VerticalOptions="Center" 
-                HorizontalOptions="Center" />
-
-        <CollectionView ItemsSource="{Binding Upcoming}">
-            <CollectionView.ItemTemplate>
-                <DataTemplate x:DataType="{x:Type model:UpcomingEventDto}">
-                    <SwipeView>
-                        <SwipeView.RightItems>
-                            <SwipeItems>
-                                <SwipeItem Text="Done" BackgroundColor="Green" 
+    <CollectionView ItemsSource="{Binding Upcoming}">
+        <CollectionView.ItemTemplate>
+            <DataTemplate x:DataType="{x:Type model:UpcomingEventDto}">
+                <SwipeView Padding="0" Margin="0">
+                    <SwipeView.RightItems>
+                        <SwipeItems>
+                            <SwipeItem Text="Done" BackgroundColor="Green"
                                            Command="{Binding Source={RelativeSource AncestorType={x:Type local:UpcomingEventsViewModel}}, Path=DoneCommand}"
                                            CommandParameter="{Binding .}"/>
-                            </SwipeItems>
-                        </SwipeView.RightItems>
-                    <Grid Padding="0,5">
-                        <Frame>
-                                <Frame.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type local:UpcomingEventsViewModel}}, Path=EditCommand}"
+                        </SwipeItems>
+                    </SwipeView.RightItems>
+                    <Frame Margin="0,2" Padding="5">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type local:UpcomingEventsViewModel}}, Path=EditCommand}"
                                                           CommandParameter="{Binding .}"/>
-                                </Frame.GestureRecognizers>
-                            <Label Text="{Binding Title}"
-                                   FontSize="24"/>
-                        </Frame>
-                    </Grid>
-                    </SwipeView>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
-
-    </StackLayout>
+                        </Frame.GestureRecognizers>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="10*" />
+                                <ColumnDefinition Width="50*" />
+                                <ColumnDefinition Width="10*" />
+                                <ColumnDefinition Width="10*" />
+                                <ColumnDefinition Width="10*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="60" />
+                            </Grid.RowDefinitions>
+                            <Image 
+                                    Source="https://t3.ftcdn.net/jpg/03/46/83/96/360_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg"/>
+                            <VerticalStackLayout
+                                    Padding="10"
+                                    Grid.Column="1">
+                                <Label
+                                        Text="{Binding Title}"
+                                        FontSize="Medium"/>
+                                <Label
+                                        Text="{Binding Date, StringFormat='{}{0:ddd dd MMM}'}"
+                                        FontSize="Small" TextColor="DarkGray"/>
+                            </VerticalStackLayout>
+                            <Image 
+                                    Grid.Column="2"
+                                    Source="https://static.thenounproject.com/png/26257-200.png"/>
+                            <ImageButton
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type local:UpcomingEventsViewModel}}, Path=EditCommand}"
+                                    CommandParameter="{Binding .}"
+                                    Grid.Column="3"
+                                    Source="https://cms-assets.tutsplus.com/cdn-cgi/image/width=630/uploads/users/523/posts/32694/final_image/tutorial-preview-large.png"/>
+                            <Image 
+                                    Grid.Column="4"
+                                    Source="https://thumbs.dreamstime.com/b/next-icon-arrows-question-mark-help-how-to-info-query-symbol-vector-illustration-119214097.jpg"/>
+                        </Grid>
+                    </Frame>
+                </SwipeView>
+            </DataTemplate>
+        </CollectionView.ItemTemplate>
+    </CollectionView>
 </ContentPage>

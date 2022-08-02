@@ -14,6 +14,9 @@ namespace GiftDay.ViewModels;
 public partial class UpcomingEventsViewModel : ViewModelBase {
     private readonly IEventsService events;
 
+    [ObservableProperty]
+    ObservableCollection<UpcomingEventDto> upcoming;
+
     public UpcomingEventsViewModel(
         INavigationService navigationService, 
         IEventsService events) 
@@ -29,9 +32,8 @@ public partial class UpcomingEventsViewModel : ViewModelBase {
         return Task.CompletedTask;
     }
     [RelayCommand]
-    Task Done(UpcomingEventDto tapped) {
-        //TODO: Mark the event as done
-        return Task.CompletedTask;
+    async Task Done(UpcomingEventDto tapped) {
+        await events.MarkGiftIsBought(tapped.Id, !tapped.GiftBought);
     }
 
     public override async Task OnAppearing() {
@@ -40,7 +42,4 @@ public partial class UpcomingEventsViewModel : ViewModelBase {
             upcoming.Add(item);
         }
     }
-
-    [ObservableProperty]
-    ObservableCollection<UpcomingEventDto> upcoming;
 }

@@ -17,5 +17,7 @@ namespace GiftDay.Models {
 
         public string PersonName { get; set; }
 
+        public bool GiftBought { get; set; }
+
     }
 }

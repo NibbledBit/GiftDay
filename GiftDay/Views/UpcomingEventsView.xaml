@@ -45,7 +45,7 @@
                                         Text="{Binding Date, StringFormat='{}{0:ddd dd MMM}'}"
                                         FontSize="Small" TextColor="DarkGray"/>
                             </VerticalStackLayout>
-                            <Image 
+                            <ImageButton 
                                     Grid.Column="2"
                                     Source="https://static.thenounproject.com/png/26257-200.png"/>
                             <ImageButton
@@ -53,7 +53,7 @@
                                     CommandParameter="{Binding .}"
                                     Grid.Column="3"
                                     Source="https://cms-assets.tutsplus.com/cdn-cgi/image/width=630/uploads/users/523/posts/32694/final_image/tutorial-preview-large.png"/>
-                            <Image 
+                            <ImageButton 
                                     Grid.Column="4"
                                     Source="https://thumbs.dreamstime.com/b/next-icon-arrows-question-mark-help-how-to-info-query-symbol-vector-illustration-119214097.jpg"/>
                         </Grid>

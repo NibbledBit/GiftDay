@@ -23,6 +23,7 @@ public class GiftEvent : IIntKeyedRecord, ISupportDomainEvents {
     public EventType Type { get; protected set; }
     public DateTime Date { get; protected set; }
 
+    public ICollection<YearlyGiftBought> YearlyGiftsBought { get; protected set; }
 
     public Person Person { get; protected set; }
     public int? PersonId { get; protected set; }
@@ -30,7 +31,6 @@ public class GiftEvent : IIntKeyedRecord, ISupportDomainEvents {
     public void AddPerson(Person person) {
         Person = person;
     }
-
 
     private List<INotification> domainEvents;
     public List<INotification> DomainEvents => domainEvents;
@@ -41,5 +41,17 @@ public class GiftEvent : IIntKeyedRecord, ISupportDomainEvents {
 
     public void RemoveDomainEvent(INotification eventItem) {
         domainEvents?.Remove(eventItem);
+    }
+
+    public void SetGiftBought(bool giftBought, int year) {
+
+        var YearGiftbought = YearlyGiftsBought.FirstOrDefault(x => x.Year == year);
+
+        if (YearGiftbought == null) {
+            YearlyGiftsBought.Add(new YearlyGiftBought(giftBought, year));
+        }
+        else {
+            YearGiftbought.Bought = giftBought;
+        }
     }
 }

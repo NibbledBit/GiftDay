@@ -49,5 +49,16 @@ namespace GiftDay.Services {
 
             return mapper.Map<IEnumerable<UpcomingEventDto>>(await events.ToListAsync());
         }
+
+        public async Task MarkGiftIsBought(int id, bool giftBought) {
+            var events = context.Set<GiftEvent>()
+                .Include(x => x.YearlyGiftsBought);
+
+            var giftEvent = await events.FirstOrDefaultAsync(x => x.Id == id);
+
+            if (giftEvent == null) throw new Exception("Event does not exist.");
+
+            giftEvent.SetGiftBought(giftBought, DateTime.Today.Year);
+        }
     }
 }

@@ -44,7 +44,8 @@ namespace GiftDay.Services {
         }
 
         public async Task<IEnumerable<UpcomingEventDto>> GetEvents() {
-            var events = context.Set<GiftEvent>();
+            var events = context.Set<GiftEvent>()
+                                .Include(x => x.Person);
 
             return mapper.Map<IEnumerable<UpcomingEventDto>>(await events.ToListAsync());
         }
